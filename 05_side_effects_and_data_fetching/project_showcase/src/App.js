@@ -9,7 +9,7 @@ const App = () => {
 
   const handleClick = () => {
     fetch("http://localhost:4000/projects")
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((projects) => setProjects(projects));
   };
 
