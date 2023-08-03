@@ -38,10 +38,11 @@ body {
   min-height: 100vh;
 }
 
-.App.light {
-  --color: var(--black);
-  --background: var(--white);
-  --primary: var(--mid-turquoise);
+.App-light {
+  color: var(--black);
+  background-color: var(--white);
+  primary: var(--mid-turquoise);
+  min-height: 100vh;
 }
 
 section {
