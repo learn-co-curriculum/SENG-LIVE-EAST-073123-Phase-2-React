@@ -87,6 +87,22 @@
       "phase": 4,
       "link": "https://gamesrx.netlify.app",
       "image": "https://i.imgur.com/Japzh6v.png"
+    },
+    {
+      "name": "project Thomas",
+      "about": "this is Thomas",
+      "phase": "",
+      "link": "homepage",
+      "image": "screenshot",
+      "id": 26
+    },
+    {
+      "name": "project Hiroki",
+      "about": "This is Hiroki",
+      "phase": "",
+      "link": "homepage",
+      "image": "screen",
+      "id": 27
     }
   ]
 }
