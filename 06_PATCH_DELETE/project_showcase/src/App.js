@@ -14,7 +14,7 @@ const App = () => {
     fetch("http://localhost:4000/projects")
       .then((resp) => resp.json())
       .then((projects) => setProjects(projects));
-  });
+  }, []);
 
   const onToggleDarkMode = () => {
     setIsDarkMode((isDarkMode) => !isDarkMode);
@@ -24,8 +24,23 @@ const App = () => {
     setProjects((projects) => [...projects, newProj]);
   };
 
-  const completeEditing = () => {
+  const completeEditing = (editedProject) => {
     setProjectId(null);
+    console.log("apppp", editedProject)
+    const editedProjectUI = projects.map((pro) => {
+      if(pro.id === projectId){
+        return editedProject
+      }else {
+        return pro
+      }
+    })
+
+    console.log(editedProjectUI)
+
+    setProjects(editedProjectUI)
+
+    //setProjects(projects, project.id === projectID replace with editedProject, projects)
+    //setProjects((projects) => [...projects, editedProject])
   };
 
   const enterProjectEditModeFor = (projectId) => {

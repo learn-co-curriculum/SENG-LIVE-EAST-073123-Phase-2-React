@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const ProjectEditForm = ({ projectId, completeEditing }) => {
+
   const initialState = {
     name: "",
     about: "",
@@ -27,7 +28,35 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
   function handleSubmit(e) {
     e.preventDefault();
     // Add code here
-    completeEditing();
+
+    fetch(`http://localhost:4000/projects/${projectId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ ...formData }),
+      })
+
+      .then((resp) => resp.json())
+      .then((editedProject) => {
+
+        console.log(editedProject)
+
+        completeEditing(editedProject);
+        
+        setFormData({
+          name: "",
+          about: "",
+          phase: "",
+          link: "",
+          image: "",
+        });
+      });
+
+
+
+
   }
 
   return (
