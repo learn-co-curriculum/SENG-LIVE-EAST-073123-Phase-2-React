@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ProjectEditForm = ({ projectId, completeEditing }) => {
+const ProjectEditForm = ({ projectId, completeEditing, onEditingProject }) => {
   const initialState = {
     name: "",
     about: "",
@@ -24,9 +24,23 @@ const ProjectEditForm = ({ projectId, completeEditing }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Add code here
+    function handleSubmit(e) {
+      e.preventDefault();
+      // Add code here
+
+      //1st we need to send the request to the server PATCH.
+      fetch(`http://localhost:4000/projects/${projectId}`, { //config object
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then( editedProject => onEditingProject(editedProject))
+
+    //2nd we are going to update the DOM by updating the state inside of our APP component.
+
     completeEditing();
   }
 
