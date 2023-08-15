@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ProjectEditForm = ({ onUpdateProject, id }) => {
+const ProjectEditForm = ({ onUpdateProject }) => {
   const [formData, setFormData] = useState({
     name: "",
     about: "",
@@ -11,9 +11,12 @@ const ProjectEditForm = ({ onUpdateProject, id }) => {
 
   const { name, about, phase, link, image } = formData;
 
+  // const { id } = useParams()
+
+  // const history = useHistory()
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/${id}`)
+    fetch(`http://localhost:4000/projects/1`)
       .then((res) => res.json())
       .then((project) => setFormData(project));
   }, []);
@@ -34,7 +37,7 @@ const ProjectEditForm = ({ onUpdateProject, id }) => {
       body: JSON.stringify(formData),
     };
 
-    fetch(`http://localhost:4000/projects/${id}`, configObj)
+    fetch(`http://localhost:4000/projects/1`, configObj)
       .then((resp) => resp.json())
       .then((updatedProj) => {
         onUpdateProject(updatedProj);

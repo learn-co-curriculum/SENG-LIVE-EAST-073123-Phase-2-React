@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom"
-
 
 const ProjectListItem = ({
   project,
   enterProjectEditModeFor,
   onDeleteProject,
 }) => {
- 
   const { id, image, about, name, link, phase } = project;
 
   const [clapCount, setClapCount] = useState(0);
@@ -22,17 +19,16 @@ const ProjectListItem = ({
   const handleDeleteClick = () => {
     fetch(`http://localhost:4000/projects/${id}`, {
       method: "DELETE",
-    })
-    .then((resp) => console.log(resp))
-    .then(onDeleteProject(project));
+    });
+    onDeleteProject(project)
+      .then((resp) => console.log(resp))
+      .then(onDeleteProject(project));
   };
 
   return (
     <li className="card">
       <figure className="image">
-        <Link to = { `/projects/${id}`}>
-          <img src={image} alt={name} />
-        </Link>
+        <img src={image} alt={name} />
         <button onClick={handleClap} className="claps">
           👏{clapCount}
         </button>
@@ -51,12 +47,9 @@ const ProjectListItem = ({
       <footer className="extra">
         <span className="badge blue">Phase {phase}</span>
         <div className="manage">
-          <Link 
-          className="button"
-          to = {`/projects/${id}/edit`}
-          onClick={ handleEditClick}>
+          <button onClick={handleEditClick}>
             <FaPencilAlt />
-          </Link>
+          </button>
           <button onClick={handleDeleteClick}>
             <FaTrash />
           </button>
