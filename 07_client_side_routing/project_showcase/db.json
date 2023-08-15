@@ -10,15 +10,6 @@
       "claps": 0
     },
     {
-      "id": 2,
-      "name": "Book Her",
-      "about": "The app takes you (the Casting Director) through a series of questions to determine the Models you need for your next Project.",
-      "phase": 4,
-      "link": "https://bookher.netlify.app/new_project",
-      "image": "https://i.imgur.com/INs84Uk.png",
-      "claps": 5
-    },
-    {
       "id": 3,
       "name": "Code Bucket #3",
       "about": "Web-based CSS, JS and HTML Editor",
