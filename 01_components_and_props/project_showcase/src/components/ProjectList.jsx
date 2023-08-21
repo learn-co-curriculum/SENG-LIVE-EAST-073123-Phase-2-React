@@ -1,18 +1,22 @@
 //rfc react functional component
 //rfc 
+import ProjectItem from "./ProjectItem"
 
-//child component
-export default function ProjectList(props) {
+export default function ProjectList({ projects }) {
 
-    console.log(props) //{ projects: Array(11)}
-    console.log(props.projects) //(11) [{…}, {…}]
+    const projectMap = projects.map((eachP) => {
+        return   <ProjectItem key={eachP.id} project = {eachP}/>
+    })
+    // console.log(".MAP", projectMap)
 
-    let { projects } = props // object de-structuring 
 
-    console.log(projects) //(11) [{…}, {…}]
-
+    // const projectForEach = projects.forEach((eachP) => eachP)
+    // console.log(".ForEach", projectForEach)
 
   return (
-    <div>ProjectList</div>
+    <>
+        <div>ProjectList</div>
+        {projectMap} 
+    </>
   )
 }
