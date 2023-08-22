@@ -10,7 +10,7 @@ const App = () => {
   const [cssToggle, setCssToggle] = useState(false)
 
   return (
-    <div className={cssToggle? "App-light":"App"}>
+    <div className={cssToggle? "App_light":"App"}>
       <Header handleCss={setCssToggle}/>
       <ProjectForm />
       <ProjectList projects={projects} />
