@@ -6,16 +6,23 @@ import ProjectList from "./components/ProjectList";
 
 const App = () => {
   const [projects, setProjects] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const onToggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   const handleClick = () => {
     fetch("http://localhost:4000/projects")
       .then((res) => res.json())
-      .then((projects) => setProjects(projects));
+      .then((projects) => {
+        console.log(projects)
+        setProjects(projects)});
   };
 
   return (
-    <div className="App">
-      <Header />
+    <div className={isDarkMode? "App": "App light"}>
+      <Header 
+        isDarkMode={isDarkMode} 
+        onToggleDarkMode={onToggleDarkMode}/>
       <ProjectForm />
       <button onClick={handleClick}>Load Projects</button>
       <ProjectList projects={projects} />
