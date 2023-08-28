@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
-// import ProjectForm from "./components/ProjectForm";
+import ProjectForm from "./components/ProjectForm";
 import ProjectList from "./components/ProjectList";
 
 const App = () => {
@@ -49,7 +49,7 @@ const App = () => {
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode} />
       <h1>{count}</h1>
       {/* <button onClick={handleClick}> Load Projects </button> */}
-      {/* <ProjectForm onAddProject= { onAddProject } /> */}
+      <ProjectForm onAddProject= { onAddProject } />
       <ProjectList projects={projects} />
     </div>
   );
