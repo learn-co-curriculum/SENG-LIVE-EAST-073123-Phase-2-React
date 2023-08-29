@@ -5,14 +5,17 @@ const ProjectList = (props) => {
      console.log(props) // {projects: Array(11)}
      console.log(props.projects) //(11) [{…}... {…}]
 
-     let projects = props.projects //object destructuring
-     console.log(projects) //(11) [{…}... {…}]
+     // let projects = props.projects
+     // console.log(projects) //(11) [{…}... {…}]
+
+     let { projects } = props  //object destructuring
+     console.log(":::::", projects)
      
      let projectMap = projects.map((eachP) => eachP)
      console.log(projectMap) //(11) [{…}... {…}] //one line doesn't need a return keyword
 
      let projectMapMultiLine = projects.map( (eachP) => {
-          return <ProjectItems project = {eachP} />
+          return <ProjectItems project = {eachP} key = {eachP.id}/>
      })
      console.log(projectMapMultiLine) //(11) [{…}... {…}]
 
