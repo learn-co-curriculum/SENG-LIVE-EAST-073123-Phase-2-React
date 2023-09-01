@@ -7,6 +7,11 @@ import ProjectEditForm from "./components/ProjectEditForm";
 import ProjectPage from "./components/ProjectPage"
 import Home from "./components/Home";
 
+import {
+  Route,
+  Routes
+} from "react-router-dom"
+
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [projects, setProjects] = useState([]);
@@ -46,14 +51,26 @@ const App = () => {
   return (
     <div className={isDarkMode ? "App" : "App light"}>
       <Header isDarkMode={isDarkMode} onToggleDarkMode={onToggleDarkMode} />
-      <Home />
-      <ProjectList
-        projects={projects}
-        onDeleteProject={onDeleteProject}
-      />
-      <ProjectEditForm onUpdateProject={onUpdateProject} />
-      <ProjectForm onAddProject={onAddProject} />
-      <ProjectPage />
+
+      <Routes >
+          <Route path="/"
+                 element={<Home />} />
+
+          <Route path="/projects"
+                 element={<ProjectList
+                            projects={projects}
+                            onDeleteProject={onDeleteProject}
+                          />} />
+
+          <Route path="/projects/:id/edit"
+                 element={<ProjectEditForm 
+                        onUpdateProject={onUpdateProject} />} />
+
+          <Route path="/projects/new"
+                 element={<ProjectForm 
+                            onAddProject={onAddProject} />} 
+                            />
+      </Routes>
     </div>
   );
 };
