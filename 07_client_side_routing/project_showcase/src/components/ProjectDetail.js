@@ -6,6 +6,7 @@ const ProjectDetail = () => {
   const [project, setProject] = useState(null);
 
   const { id } = useParams()
+  console.log(id)
  
   useEffect(() => {
     fetch(`http://localhost:4000/projects/${id}`)

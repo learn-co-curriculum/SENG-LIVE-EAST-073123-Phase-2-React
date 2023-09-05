@@ -83,17 +83,17 @@ const App = () => {
                               />} 
               />
 
- 
               <Route path="/projects/new" 
                      element={<ProjectForm 
                               onAddProject={onAddProject} />} 
               />
 
-              <Route path={`/projects/${projectId}`} 
+              {/* <Route path={`/projects/${projectId}`}  */}
+              <Route path={"/projects/:id"} 
                      element={<ProjectDetail/>} 
               />
                                
-              <Route path={`/projects/${projectId}/edit`} 
+              <Route path={"/projects/:id/edit"} 
                      element={<ProjectEditForm 
                               onUpdateProject={onUpdateProject} 
                               id = {projectId}
